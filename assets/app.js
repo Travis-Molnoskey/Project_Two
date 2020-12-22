@@ -53,7 +53,7 @@
     // d3.queue() is deprecated in v5 use Promises.all
     d3.queue()
         // .defer(d3.csv, "data/state_production_new.csv")
-        .defer(d3.csv, "data/state_production_cleaned.csv")
+        .defer(d3.csv, "Resources/state_production_cleaned.csv")
         .await(ready)
 
     function ready (error, datapoints){
