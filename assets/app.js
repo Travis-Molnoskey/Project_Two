@@ -30,12 +30,15 @@
             return 1200 
     }).strength(0.10)
 
-    var forceXCombine = d3.forceX(width / 2).strength(0.10)
+    var forceXCombine = d3.forceX(width / 2).strength(0.12)
 
     var forceCollide = d3.forceCollide(function (d){
         return radiusScale (d.production) +1;
     })
 
+    var myColor = d3.scaleOrdinal()
+    .domain(['Bottles and cans', 'Kegs and Barrels', 'On Premises'])
+    .range(d3.schemePurples[4]);
 
     // Applies force to each circle to get them to move towards the center
     var simulation = d3.forceSimulation ()
@@ -65,7 +68,8 @@
             .attr("r", function (d){
                 return radiusScale (d.production)
             })
-            .attr("fill", "lightblue")
+            // .attr("fill", "lightblue")
+            .style("fill", function (d) { return myColor(d.type); })
             .on('click', function(d){
                 console.log(d)
             })
