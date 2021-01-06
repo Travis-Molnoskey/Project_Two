@@ -1,27 +1,59 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #111;
-  }
+/*overall body color*/
+body {
+	background-color:#0F7173;
+	padding: 30px;
+}
 
-  .active {
-  background-color: #4CAF50;
+.my-container {
+	border: 1px solid white;
+	}
+
+.my-row {
+	border: 3px solid white;
+	}
+
+.my-col {
+	border: 3px solid white;
+	background-color: #f2f2f2;
+}
+
+/*#body is the 2nd row, Map area, under the menu*/
+#body {
+	height: 600px;
+	width: auto;
+}
+
+/*#body2 is the 3rd row, explanation area*/
+#body2 {
+	height: 200px;
+	width: auto;
+} 
+
+/*#bodynav is the 1st row, menu bar*/
+.bodynav {
+	background-color: #191919;
+	font-color: #FFFFFF;
+	font-weight: bold;
+}
+
+/*link properties, I still need to fix it*/
+
+/* unvisited link */
+a:link {
+  color: #FFFFFF;
+}
+
+/* visited link */
+a:visited {
+  color: #FFFFFF;
+}
+
+/* selected link */
+a:active {
+  color: #FFFFFF;
+}
+
+/* mouse over link */
+a:hover {
+  color: #FFFFFF;
 }

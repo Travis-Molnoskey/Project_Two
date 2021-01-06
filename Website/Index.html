@@ -4,57 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <title>Bubbles For Brews</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css"> <!--local external stylesheet-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><!--Bootstrap stylesheet, external, from the web-->
 </head>
 
 <body>
  
   <h1>Bubbles For Brews</h1>
   <p><i>Contributors: Cindy Ngo, Gage Stout, Juneelyn Bacaltos, Tigist Keneni and Travis Molnoskey.</i></p>
-
-  <!--Will separate CSS later on-->
-  <!--commenting out in-html CSS
- 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
   
-  li {
-    float: left;
-  }
+  <!--start of bootstrap code-->
   
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #111;
-  }
-
-  .active {
-  background-color: #4CAF50;
-}
-  </style>
--->
-<!--end of comment-->
-
-
-  <body>
-  
-  <ul>
-    <li><a href="Index.html">Brewery Production</a></li>
-    <li><a href="leafletmap.html">Leaflet Map</a></li>
-    <li><a href="productionoveryears.html">Production Over Years</a></li>
-    <li><a href="uniquetypesofbeer.html">Unique Types of Beer</a></li>
-  </ul>
-  
+  <div class="container my-container">
+  <!--This is the menu bar-->
+	<div class="row my-row">
+		<div class="col-md-3 my-col bodynav">
+		<a href="Index.html">Brewery </a>
+		</div>
+		<div class="col-md-3 my-col bodynav">
+		<a href="leafletmap.html">Leaflet Map</a>
+		</div>
+		<div class="col-md-3 my-col bodynav">
+		<a href="productionoveryears.html">Production Over Years</a>
+		</div>
+		<div class="col-md-3 my-col bodynav">
+		<a href="uniquetypesofbeer.html">Unique Types of Beer</a>
+		</div>
+	</div>
+	<!--This is the body or the map-->
+	<div class="row my-row">
+		<div class="col-md-12 my-col" id="body">
+			
+			<!--Insert interactive map thingy code here-->
+			Test: Map Area<br>
+			- I'm using Bootstrap grid system.<br>
+			- I still need to get rid of the lines of the links.<br>
+			- get rid of blue hover, change it to another color.<br>
+			- still need to style the other webpages, as the same. <br>
+			- see website mock-up ---><a href="mockup.png" target="_blank" id="alientlink"> here</a> <---<br>
+			<!--END OF Insert interactive map thingy code-->
+		</div>
+	</div>
+	
+	<!--This is the explanation of the map-->
+	
+	<div class="row my-row">
+			<div class="col-md-12 my-col" id="body2">
+			
+		<!--Insert map explanation here-->	
+		Map explanation here
+		<!--End of map explanation.-->
+		</div>
+	</div>  
+<!--end of bootstrap code-->
   </body>
   </html>
