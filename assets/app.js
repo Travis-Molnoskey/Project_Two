@@ -101,16 +101,19 @@
                 .force("collide", d3.forceCollide (function (d) {
                     return radiusScale (d.production) +2;}))
                 .alphaTarget(0.15)
-                .await(sleep)
+                .restart()
+        
             console.log("You clicked me")
         })
 
         d3.select("#combine").on('click', function (){
             simulation
-                .force("x", d3.forceX(width /2).strength(.20))
-                .force("y", d3.forceY(height/2).strength(.20))
+                // .force("manyBody", d3.forceManyBody().strength(30))
+                // .force("center", d3.forceCenter(10,20).strength(smooth ? 1 : 1))
+                .force("x", d3.forceX(width/2).strength(.010))
+                .force("y", d3.forceY(height/2).strength(.010))
                 .force("collide", d3.forceCollide (function (d) {
-                    return radiusScale (d.production) +2;}))
+                    return radiusScale (d.production) +5;}))
                 .alphaTarget(.20)
                 .restart()
             console.log("combined the bubbles")
