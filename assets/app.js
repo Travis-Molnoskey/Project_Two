@@ -30,7 +30,7 @@
         //     return 850 
         } else
             return 1200
-    }).strength(0.10)
+    }).strength(0.15)
 
     var forceXCombine = d3.forceX(width / 2).strength(0.12)
 
@@ -68,7 +68,7 @@
 // ------ CREATING CIRCLES & APPENDING DATA ----------------
     function ready (error, datapoints){
 
-        var circles =svg.selectAll(".state")
+        var circles = svg.selectAll(".state")
             .data(datapoints)
             .enter().append("circle")
             .attr("class", "state")
@@ -77,20 +77,19 @@
             })
             .style("fill", function (d) { return myColor(d.type); 
             })
+
+// -------- LOTS OF ISSUES WITH MOUSE OVERS --------------------------------
             .on("mouseover", function(){ return tooltip.style("visibility", "visible");})
-            .on("mouseover", function(){ return tooltip.style("top",
-                (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-            // .on("mouseout", function (){return tooltip.style("visibility", "hidden");})
-            // .on("mouseover", function (d) { return tooltip.text(d.state + ": " + format(d.production));})
+            // .on("mouseover", function(){ return tooltip.style("top",
+            //     (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+            // // .on("mouseout", function (){return tooltip.style("visibility", "hidden");})
+            .on("mouseover", function (d) { return tooltip.text(d.state + ": " + (d.type) + ": " +  (d.production));})
+
+
             .on('click', function(d){
                 console.log(d)
             })
            
-        // d3.selectAll("svg")
-        //     .append("svg.circle")
-        //     .on("mouseover", function(){ return tooltip.style("visibilitty", "visible");})
-        //     .on("mouseover", function(){ return tooltip.style("top",
-        //         (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
 
 // --------- SELECTING BUTTONS + CREATING FORCE(ALPHA) SIMLUATION -------------
 
@@ -99,19 +98,24 @@
         d3.select("#type").on('click', function (){
             simulation
                 .force("x", forceXSplit)
-                .alphaTarget(0.1)
-                .restart()
+                .force("collide", d3.forceCollide (function (d) {
+                    return radiusScale (d.production) +2;}))
+                .alphaTarget(0.15)
+                .await(sleep)
             console.log("You clicked me")
         })
 
         d3.select("#combine").on('click', function (){
             simulation
-                .force("x", forceXCombine)
-                .alphaTarget(0.10)
+                .force("x", d3.forceX(width /2).strength(.20))
+                .force("y", d3.forceY(height/2).strength(.20))
+                .force("collide", d3.forceCollide (function (d) {
+                    return radiusScale (d.production) +2;}))
+                .alphaTarget(.20)
                 .restart()
             console.log("combined the bubbles")
-        })
-
+        });
+        
         // Feeding the simulation all the datapoints "nodes"
         // Every node is a circle
         simulation.nodes(datapoints)
@@ -136,7 +140,7 @@
 // --------  CREATING TOOLTIP INFO FOR MOUSE OVER EFFECTS ----------------------
 
     // tooltip for mouse over
-    var tooltip = d3.select("#chart")
+    var tooltip = d3.select("#chart")		
     .append("div")
     .style("position", "absolute")
     .style("z-index", "10")
@@ -149,6 +153,30 @@
     .style("font", "12px sans-serif")
     .text("sample text");
 
+
+// -------------- COULD NOT GET THIS TO WORK -----------------
+    // var chartGroup = svg.append("g")
+
+    // var toolTip = d3.tip()
+    //     .attr("class", "tooltip")
+    //     .offset([80, -60])
+    //     .html(function(d) {
+    //       return (`<strong>${(d.production)}<strong><hr>${d.state}
+    //       medal(s) won`);
+    //     });
+    
+    //  // Step 2: Create the tooltip in chartGroup.
+    // chartGroup.call(toolTip);
+
+    // // Step 3: Create "mouseover" event listener to display tooltip
+    // circles.on("mouseover", function(d) {
+    //     toolTip.show(d, this);
+    //       })
+    // // Step 4: Create "mouseout" event listener to hide tooltip
+    //     .on("mouseout", function(d) {
+    //         toolTip.hide(d);
+        // });
+    
 
 
     // Creating legend
