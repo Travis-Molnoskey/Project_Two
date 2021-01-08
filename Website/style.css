@@ -1,3 +1,7 @@
+/*Hello team, our content, such as the chart or javascript code/map and 
+text might bleed past the bootstrap grid boxes. Please let me know if that happens and
+we'll find a way on how to restrict within a specific height and width. Good luck! Thank you."*/
+
 /*overall body color*/
 body {
 	background-color:#0F7173;
@@ -46,8 +50,6 @@ body {
 }
 
 
-/*link properties, I still need to fix it*/
-
 /* unvisited link */
 a:link {
   color: #FFFFFF;
@@ -67,7 +69,7 @@ a:active {
 .bodynav a:hover {
   color:  #ff8566;
 }
-
+/*mouse over link for "current page indicator." I just retained the "a href" element because the colors won't work if i change it to regular text.*/
 .bodynav2 a:hover {
   color:  #FFFFFF;
 }
