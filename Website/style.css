@@ -29,12 +29,22 @@ body {
 	width: auto;
 } 
 
+
 /*#bodynav is the 1st row, menu bar*/
 .bodynav {
 	background-color: #191919;
 	font-color: #FFFFFF;
 	font-weight: bold;
 }
+
+/*#bodynav2 is a link in menu indicating the current page you're in*/
+.bodynav2 {
+	background-color: #0F7173;
+	font-color: #FFFFFF;
+	font-weight: bold;
+	padding: 0px
+}
+
 
 /*link properties, I still need to fix it*/
 
@@ -54,6 +64,10 @@ a:active {
 }
 
 /* mouse over link */
-a:hover {
-  color: #FFFFFF;
+.bodynav a:hover {
+  color:  #ff8566;
+}
+
+.bodynav2 a:hover {
+  color:  #FFFFFF;
 }
