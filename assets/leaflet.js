@@ -1,3 +1,10 @@
+
+// d3.csv("Resources/breweries.csv").then(function(data){
+//     data.forEach(function(d){
+//       breweries.push(d.name)
+//     })
+//   });
+
 function createMap(breweries) {
 
     // Create the tile layer that will be the background of our map
@@ -7,7 +14,7 @@ function createMap(breweries) {
       id: "light-v10",
       accessToken: API_KEY
     });
-  
+
     // Create a baseMaps object to hold the lightmap layer
     var baseMaps = {
       "Light Map": lightmap
@@ -20,8 +27,8 @@ function createMap(breweries) {
   
     // Create the map object with options
     var map = L.map("map-id", {
-      center: [40.73, -74.0059],
-      zoom: 12,
+      center: [41, -96],
+      zoom: 5,
       layers: [lightmap, breweries]
     });
   
@@ -35,16 +42,31 @@ function createMap(breweries) {
     console.log(data[0]);
   
     
+
     // Initialize an array to hold bike markers
     var breweriesMarkers = [];
   
     // Loop through the stations array
     for (var index = 0; index <data.length; index++) {
       var brewery = data[index];
-  
+
+      // console.log(brewery);
+
+//trying to get brewery name instead of id
+
+      // d3.csv("Resources/breweries.csv", function(data){
+      //   data.forEach(function(d){
+      //     if (brewery.brewery_id === d.id){
+      //       brew_name = d.name
+      //       console.log(d.name)
+      //       console.log(brew_name)
+      //     }
+      //   });
+      // });
+
       // For each station, create a marker and bind a popup with the station's name
       var breweriesMarker = L.marker([brewery.latitude, brewery.longitude])
-        .bindPopup("<h3>" + brewery.id + "<h3><h3>Capacity: " + brewery.accuracy + "</h3>");
+        .bindPopup("<h4> Brewery ID: " + brewery.id + `</br>Lat: ${brewery.latitude} </br> Long: ${brewery.longitude}</br>Location Accuracy: ` + brewery.accuracy + "</h4>");
   
       // Add the marker to the breweriesMarkers array
       breweriesMarkers.push(breweriesMarker);
@@ -55,7 +77,7 @@ function createMap(breweries) {
   }
   
   
-  // Perform an API call to the Citi Bike API to get station information. Call createMarkers when complete
+  // Perform an API call to the brewery data to get station information. Call createMarkers when complete
   d3.csv("Resources/breweries_geocode.csv", function(data){
       createMarkers (data);
   });
