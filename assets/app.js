@@ -1,10 +1,8 @@
-
 // ----------------------CREATING SVG SIZE & SELECTING CHART---------------------
 // Width and height
 (function() {
-    var width = 1400,
-    height = 1000;
-
+    var width = 1200,
+    height = 600;
  
     var svg = d3.select("#chart")
         .append("svg")
@@ -14,7 +12,7 @@
         .attr("transform", "translate(0,0)")
 
     // Play around with range. Domain is the min and max value
-    var radiusScale = d3.scaleSqrt ().domain ([3008.21, 226327173.3]).range([10, 80])
+    var radiusScale = d3.scaleSqrt ().domain ([3008.21, 226327173.3]).range([5, 40])
 
     // The simulation is a collection of forces about where we want our circles to go 
     // and how we want our circles to interact
@@ -25,11 +23,11 @@
     // Creating a function to move the data points on an if statment
     var forceXSplit = d3.forceX(function(d){
         if(d.type === 'Bottles and Cans') {
-            return 400 
+            return width*.25 
         // } else if (d.type === 'Kegs and Barrels') {
         //     return 850 
         } else
-            return 1200
+            return width*.75
     }).strength(0.15)
 
     var forceXCombine = d3.forceX(width / 2).strength(0.12)
@@ -85,8 +83,8 @@
                 .duration(200)		
                 .style("opacity", .9);		
                 tooltip	.html(d.state + ": " + (d.type) + ": " +  (d.production))	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 28) + "px");
+                .style("left", (d3.event.pageX-170) + "px")		
+                .style("top", (d3.event.pageY -170) + "px");
                 })
             .on("mouseout", function(d) {		
                 tooltip.transition()		
@@ -173,7 +171,7 @@
 
     // Creating legend
     var ordinal = d3.scaleOrdinal()
-        .domain(["Bottles & Cans", "Kegs & Barrles", "On Premises"])
+        .domain(["Bottles & Cans", "Kegs & Barrels", "On Premises"])
         .range([ "rgb(106, 81, 163)", "rgb(203, 201, 226)", "rgb(158, 154, 200)", "rgb(223, 199, 31)", "rgb(234, 118, 47)"]);
 
     var svg = d3.select("svg");

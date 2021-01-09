@@ -1,0 +1,88 @@
+/*Hello team, our content, such as the chart or javascript code/map and 
+text might bleed past the bootstrap grid boxes. Please let me know if that happens and
+we'll find a way on how to restrict within a specific height and width. Good luck! Thank you."*/
+
+/*overall body color*/
+body {
+	background-color:#0F7173;
+	padding: 30px;
+}
+
+.my-container {
+	border: 1px solid white;
+	}
+
+.my-row {
+	border: 3px solid white;
+	}
+
+.my-col {
+	border: 3px solid white;
+	background-color: #f2f2f2;
+}
+
+/*#body is the 2nd row, Map area, under the menu*/
+#body {
+	height: 600px;
+	width: auto;
+}
+
+/*#body2 is the 3rd row, explanation area*/
+#body2 {
+	height: 200px;
+	width: auto;
+} 
+
+
+/*#bodynav is the 1st row, menu bar*/
+.bodynav {
+	background-color: #191919;
+	font-color: #FFFFFF;
+	font-weight: bold;
+}
+
+/*#bodynav2 is a link in menu indicating the current page you're in*/
+.bodynav2 {
+	background-color: #0F7173;
+	font-color: #FFFFFF;
+	font-weight: bold;
+	padding: 0px
+}
+
+
+/* unvisited link */
+a:link {
+  color: #FFFFFF;
+}
+
+/* visited link */
+a:visited {
+  color: #FFFFFF;
+}
+
+/* selected link */
+a:active {
+  color: #FFFFFF;
+}
+
+/* mouse over link */
+.bodynav a:hover {
+  color:  #ff8566;
+}
+/*mouse over link for "current page indicator." I just retained the "a href" element because the colors won't work if i change it to regular text.*/
+.bodynav2 a:hover {
+  color:  #FFFFFF;
+}
+/* tool tip styling */
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 200px;					
+    height: 15px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
