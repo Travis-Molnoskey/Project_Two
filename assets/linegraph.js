@@ -85,10 +85,6 @@ function graph(error, datapoints){
           
         });
 
-    console.log(LineOne)
-    console.log(LineTwo)
-    console.log(LineThree)
-
     // Configure a time scale with a range between 0 and the chartWidth
     // Set the domain for the xTimeScale function
     // d3.extent returns the an array containing the min and max values for the property specified
@@ -142,6 +138,12 @@ function graph(error, datapoints){
     var xAxis = chartGroup.append('g')
     .attr("transform", "translate(0, " + chartHeight + ")")
     .call(bottomAxis);
+
+    chartGroup.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", svgWidth-margin.left)
+    .attr("y", svgHeight + margin.bottom + 20)
+    .text("X axis title");
 
     function updateChart(stateSelection){
 
