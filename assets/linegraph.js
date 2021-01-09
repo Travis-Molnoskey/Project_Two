@@ -18,10 +18,10 @@ function graph(error, datapoints){
 
     // Define the chart's margins as an object
     var margin = {
-    top: 60,
-    right: 60,
-    bottom: 60,
-    left: 60
+    top: 50,
+    right: 100,
+    bottom: 200,
+    left: 100
     };
   
     // Define dimensions of the chart area
@@ -139,11 +139,39 @@ function graph(error, datapoints){
     .attr("transform", "translate(0, " + chartHeight + ")")
     .call(bottomAxis);
 
-    chartGroup.append("text")
-    .attr("text-anchor", "end")
-    .attr("x", svgWidth-margin.left)
-    .attr("y", svgHeight + margin.bottom + 20)
-    .text("X axis title");
+    lineSvg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("x", svgWidth/2)
+        .attr("y", chartHeight + margin.top + 50)
+        .text("Years");
+
+    lineSvg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 20)
+        .attr("x", 0 - (chartHeight / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Production (Barrels)");   
+
+    //add a legend
+    var ordinal = d3.scaleOrdinal()
+    .domain(ProductionTypes)
+    .range(["green","blue","red"]);
+
+
+    lineSvg.append("g")
+    .attr("class", "legendOrdinal")
+    .attr("transform", `translate(${margin.left},${chartHeight+(margin.bottom/2)})`);
+
+    var legendOrdinal = d3.legendColor()
+    .shape("path", d3.symbol().type(d3.symbolSquare).size(150)())
+    .shapePadding(10)
+    .scale(ordinal);
+
+    lineSvg.select(".legendOrdinal")
+    .call(legendOrdinal);
+
+    //function to update chart based on new selection
 
     function updateChart(stateSelection){
 
