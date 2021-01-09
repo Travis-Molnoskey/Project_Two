@@ -37,13 +37,31 @@
 		<div class="col-md-12 my-col" id="body">
 			
 			<!--Insert interactive map thingy code here-->
-			Test: Map Area<br>
-			- I'm using Bootstrap grid system.<br>
-			- I still need to get rid of the lines of the links.<br>
-			- get rid of blue hover, change it to another color.<br>
-			- still need to style the other webpages, as the same. <br>
-			- see website mock-up ---><a href="mockup.png" target="_blank" id="alientlink"> here</a> <---<br>
-			<!--END OF Insert interactive map thingy code-->
+			<hr> State Brewery Production by Type</hr>
+                <br>
+                <button id="type"> Production Type Split</button>
+                <input type="button" value="Refresh" onClick="refresh(this)">
+                <!-- <button id="combine"> Combine </button> -->
+                <div id="chart"></div>
+
+                <script>
+                    function refresh(){
+                        window.location.reload("Refresh")
+                        }
+                </script>
+
+                <!-- Libs -->
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js" integrity="sha512-Fsayt8p+pwY5ebs4WM1KwVTQJHPKizdz4FQSuUKqR/EWcphyKiy3gGBc335410/YUHKhV1IydBMaFqwPkbT4LA==" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+                <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+                <script src ="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+                
+
+
+                <!-- Link to visualization -->
+                <script src="assets/app.js"></script>
+            <!--END OF Insert interactive map thingy code-->
 		</div>
 	</div>
 	<!--End of the map or JS Script or graph-->
@@ -59,5 +77,6 @@
 		</div>
 	</div>  
 <!--end of bootstrap code-->
+
   </body> <!--end of HTML body-->
   </html>
