@@ -78,13 +78,8 @@
             .style("fill", function (d) { return myColor(d.type); 
             })
 
-// -------- LOTS OF ISSUES WITH MOUSE OVERS --------------------------------
-            // .on("mouseover", function(){ 
-            //     return tooltip.style("visibility", "visible");
-            //     })
-            // .on("mouseover", function(){ return tooltip.style("top",
-            //     (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-            // // .on("mouseout", function (){return tooltip.style("visibility", "hidden");})
+// -------- MOUSE OVER FOR TOOL TIP --------------------------------
+        
             .on("mouseover", function (d) {
                 tooltip.transition()		
                 .duration(200)		
@@ -172,28 +167,7 @@
     // .text("sample text");
 
 
-// -------------- COULD NOT GET THIS TO WORK -----------------
-    // var chartGroup = svg.append("g")
 
-    // var toolTip = d3.tip()
-    //     .attr("class", "tooltip")
-    //     .offset([80, -60])
-    //     .html(function(d) {
-    //       return (`<strong>${(d.production)}<strong><hr>${d.state}
-    //       medal(s) won`);
-    //     });
-    
-    //  // Step 2: Create the tooltip in chartGroup.
-    // chartGroup.call(toolTip);
-
-    // // Step 3: Create "mouseover" event listener to display tooltip
-    // circles.on("mouseover", function(d) {
-    //     toolTip.show(d, this);
-    //       })
-    // // Step 4: Create "mouseout" event listener to hide tooltip
-    //     .on("mouseout", function(d) {
-    //         toolTip.hide(d);
-    //     });
     
 
 

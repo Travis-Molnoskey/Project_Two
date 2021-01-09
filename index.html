@@ -23,8 +23,15 @@
     <hr> State Brewery Production by Type</hr>
     <br>
     <button id="type"> Prodcution Type Split</button>
-    <button id="combine"> Combine </button>
+    <input type="button" value="Refresh" onClick="refresh(this)">
+    <!-- <button id="combine"> Combine </button> -->
     <div id="chart"></div>"
+
+    <script>
+        function refresh(){
+              window.location.reload("Refresh")
+            }
+      </script>
 
     <!-- Libs -->
     
