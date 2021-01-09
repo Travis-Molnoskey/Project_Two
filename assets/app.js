@@ -79,12 +79,25 @@
             })
 
 // -------- LOTS OF ISSUES WITH MOUSE OVERS --------------------------------
-            .on("mouseover", function(){ return tooltip.style("visibility", "visible");})
+            // .on("mouseover", function(){ 
+            //     return tooltip.style("visibility", "visible");
+            //     })
             // .on("mouseover", function(){ return tooltip.style("top",
             //     (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
             // // .on("mouseout", function (){return tooltip.style("visibility", "hidden");})
-            .on("mouseover", function (d) { return tooltip.text(d.state + ": " + (d.type) + ": " +  (d.production));})
-
+            .on("mouseover", function (d) {
+                tooltip.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+                tooltip	.html(d.state + ": " + (d.type) + ": " +  (d.production))	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");
+                })
+            .on("mouseout", function(d) {		
+                tooltip.transition()		
+                        .duration(200)		
+                        .style("opacity", 0);	
+                })
 
             .on('click', function(d){
                 console.log(d)
@@ -145,16 +158,18 @@
     // tooltip for mouse over
     var tooltip = d3.select("#chart")		
     .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
+    .attr("class","tooltip")
+    .style("opacity",0)
+    // .style("position", "absolute")
+    // .style("z-index", "10")
     // .style("visibilty", "hidden")
-    .style("visibility", "visibile")
-    .style("color", "white")
-    .style("padding", "8px")
-    .style("background-color", "rgba(0, 0, 0, 0.75)")
-    .style("border-radius", "6px")
-    .style("font", "12px sans-serif")
-    .text("sample text");
+    // .style("visibility", "visibile")
+    // .style("color", "white")
+    // .style("padding", "8px")
+    // .style("background-color", "rgba(0, 0, 0, 0.75)")
+    // .style("border-radius", "6px")
+    // .style("font", "12px sans-serif")
+    // .text("sample text");
 
 
 // -------------- COULD NOT GET THIS TO WORK -----------------
@@ -178,7 +193,7 @@
     // // Step 4: Create "mouseout" event listener to hide tooltip
     //     .on("mouseout", function(d) {
     //         toolTip.hide(d);
-        // });
+    //     });
     
 
 
